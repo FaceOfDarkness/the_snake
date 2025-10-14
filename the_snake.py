@@ -31,12 +31,14 @@ clock = pygame.time.Clock()
 
 class Snake:
     """Класс змейки"""
+
     def __init__(self):
         """Инициализация змейки"""
         self.positions = [(GRID_WIDTH // 2, GRID_HEIGHT // 2)]
         self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
         self.next_direction = self.direction
         self.alive = True
+
 
     def handle_keys(self):
         """Обработка нажатий клавиш"""
@@ -54,9 +56,11 @@ class Snake:
                 elif event.key == pygame.K_RIGHT and self.direction != LEFT:
                     self.next_direction = RIGHT
 
+
     def update_direction(self):
         """Обновление направления движения"""
         self.direction = self.next_direction
+
 
     def move(self):
         """Движение змейки и проверка столкновений"""
@@ -85,9 +89,11 @@ class Snake:
         # Обновление позиций
         self.positions = [new_head] + self.positions[:-1]
 
+
     def grow(self):
         """Увеличение длины змейки"""
         self.positions.append(self.positions[-1])
+
 
     def draw(self, surface):
         """Отображение змейки"""
@@ -100,6 +106,7 @@ class Snake:
 
 class Apple:
     """Класс яблока"""
+
     def __init__(self, snake_positions):
         """Инициализация яблока"""
         self.position = self.random_position(snake_positions)
