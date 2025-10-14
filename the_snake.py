@@ -158,19 +158,16 @@ def main():
         screen.blit(score_text, (10, 10))
         pygame.display.flip()
 
-    # Конец игры
+        # Конец игры
     font = pygame.font.SysFont(None, 48)
     game_over_text = font.render("Игра окончена!", True, (255, 0, 0))
     screen.blit(
         game_over_text,
-        (SCREEN_WIDTH //
-         2
-         - game_over_text.get_width()
-         // 2,
-         SCREEN_HEIGHT
-         // 2
-         - game_over_text.get_height()
-         // 2))
+        (
+            SCREEN_WIDTH // 2 - game_over_text.get_width() // 2,
+            SCREEN_HEIGHT // 2 - game_over_text.get_height() // 2
+        )
+    )
     pygame.display.flip()
     pygame.time.wait(3000)
     pygame.quit()
