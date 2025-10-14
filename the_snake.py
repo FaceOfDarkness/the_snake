@@ -40,7 +40,6 @@ class Snake:
         self.next_direction = self.direction
         self.alive = True
 
-
     def handle_keys(self):
         """Обработка нажатий клавиш."""
         for event in pygame.event.get():
@@ -57,11 +56,9 @@ class Snake:
                 elif event.key == pygame.K_RIGHT and self.direction != LEFT:
                     self.next_direction = RIGHT
 
-
     def update_direction(self):
         """Обновление направления движения."""
         self.direction = self.next_direction
-
 
     def move(self):
         """Движение змейки и проверка столкновений."""
@@ -90,11 +87,9 @@ class Snake:
         # Обновление позиций
         self.positions = [new_head] + self.positions[:-1]
 
-
     def grow(self):
         """Увеличение длины змейки."""
         self.positions.append(self.positions[-1])
-
 
     def draw(self, surface):
         """Отображение змейки."""
@@ -166,8 +161,16 @@ def main():
     # Конец игры
     font = pygame.font.SysFont(None, 48)
     game_over_text = font.render("Игра окончена!", True, (255, 0, 0))
-    screen.blit(game_over_text, (SCREEN_WIDTH // 2 - game_over_text.get_width() // 2,
-                                   SCREEN_HEIGHT // 2 - game_over_text.get_height() // 2))
+    screen.blit(
+        game_over_text,
+        (SCREEN_WIDTH //
+         2
+         - game_over_text.get_width()
+         // 2,
+         SCREEN_HEIGHT
+         // 2
+         - game_over_text.get_height()
+         // 2))
     pygame.display.flip()
     pygame.time.wait(3000)
     pygame.quit()
