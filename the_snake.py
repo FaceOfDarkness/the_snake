@@ -42,10 +42,8 @@ class Snake(GameObject):
         start_y = GRID_HEIGHT // 2
         super().__init__((start_x, start_y))
         self.positions = [(start_x, start_y)]
-        # Разделение длинной строки
-        self.direction = random.choice(
-            [UP, DOWN, LEFT, RIGHT]
-        )
+        # Исправленная строка с переносом не превышающим 79 символов
+        self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
         self.next_direction = self.direction
         self.body_color = SNAKE_COLOR
 
