@@ -42,7 +42,7 @@ class Snake(GameObject):
         start_y = GRID_HEIGHT // 2
         super().__init__((start_x, start_y))
         self.positions = [(start_x, start_y)]
-        # Исправленная строка с переносом не превышающим 79 символов
+        # Исправленный перенос строки
         self.direction = random.choice(
             [UP, DOWN, LEFT, RIGHT]
         )
