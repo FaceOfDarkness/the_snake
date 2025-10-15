@@ -25,8 +25,11 @@ clock = pygame.time.Clock()
 class GameObject:
     """Базовый класс для игровых объектов."""
 
-    def __init__(self, position):
-        self.position = position
+    def __init__(self, position=None):
+        if position is None:
+            self.position = (0, 0)
+        else:
+            self.position = position
 
     def draw(self, surface):
         """Отрисовать объект на поверхности."""
@@ -88,6 +91,18 @@ class Snake(GameObject):
         if head in self.positions[1:]:
             return True
         return False
+
+    def get_head_position(self):
+        """Возвращает текущую позицию головы змейки."""
+        return self.positions[0]
+
+    def reset(self):
+        """Сброс состояния змейки в начальную."""
+        start_x = GRID_WIDTH // 2
+        start_y = GRID_HEIGHT // 2
+        self.positions = [(start_x, start_y)]
+        self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
+        self.next_direction = self.direction
 
     def draw(self, surface):
         """Отрисовка змейки."""
