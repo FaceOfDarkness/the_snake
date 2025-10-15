@@ -37,12 +37,15 @@ class Snake(GameObject):
     """Класс змейки."""
 
     def __init__(self):
-        """Инициализация змейки в центре поля и случайным направлением."""
+        """Инициализация змейки в центре поля и случайным направлениям."""
         start_x = GRID_WIDTH // 2
         start_y = GRID_HEIGHT // 2
         super().__init__((start_x, start_y))
         self.positions = [(start_x, start_y)]
-        self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
+        # Разделение длинной строки
+        self.direction = random.choice(
+            [UP, DOWN, LEFT, RIGHT]
+        )
         self.next_direction = self.direction
         self.body_color = SNAKE_COLOR
 
