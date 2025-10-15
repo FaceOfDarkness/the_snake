@@ -25,28 +25,21 @@ clock = pygame.time.Clock()
 class GameObject:
     """Базовый класс для игровых объектов."""
 
-    def __init__(self, position=None):
+    def __init__(self, position=None, body_color=None):
         if position is None:
             self.position = (0, 0)
         else:
             self.position = position
-
-    def draw(self, surface):
-        """Отрисовать объект на поверхности."""
-        raise NotImplementedError(
-            "Метод draw должен быть реализован в "
-            "подклассах"
-        )
+        self.body_color = body_color
 
 
 class Snake(GameObject):
     """Класс змейки."""
 
     def __init__(self):
-        """Инициализация змейки в центре поля со случайным направлением."""
         start_x = GRID_WIDTH // 2
         start_y = GRID_HEIGHT // 2
-        super().__init__((start_x, start_y))
+        super().__init__((start_x, start_y), body_color=SNAKE_COLOR)
         self.positions = [(start_x, start_y)]
         self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
         self.next_direction = self.direction
@@ -125,7 +118,7 @@ class Apple(GameObject):
             random.randint(0, GRID_WIDTH - 1),
             random.randint(0, GRID_HEIGHT - 1),
         )
-        super().__init__(position)
+        super().__init__(position, body_color=APPLE_COLOR)
         self.body_color = APPLE_COLOR
 
     def draw(self, surface):
