@@ -32,6 +32,10 @@ class GameObject:
             self.position = position
         self.body_color = body_color
 
+    def draw(self, surface):
+        """Базовый метод отрисовки, ожидается, что в наследниках реализован."""
+        pass  # Или: raise NotImplementedError()
+
 
 class Snake(GameObject):
     """Класс змейки."""
@@ -113,7 +117,6 @@ class Apple(GameObject):
     """Класс яблока."""
 
     def __init__(self):
-        """Генерация начальной позиции яблока."""
         position = (
             random.randint(0, GRID_WIDTH - 1),
             random.randint(0, GRID_HEIGHT - 1),
