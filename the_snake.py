@@ -91,7 +91,9 @@ class Snake(GameObject):
     def draw(self, surface):
         """Отрисовка змейки."""
         for pos in self.positions:
-            rect = pygame.Rect(pos[0] * GRID_SIZE, pos[1] * GRID_SIZE, GRID_SIZE, GRID_SIZE)
+            rect = pygame.Rect(pos[0] * GRID_SIZE,
+                               pos[1] * GRID_SIZE,
+                               GRID_SIZE, GRID_SIZE)
             pygame.draw.rect(surface, self.body_color, rect)
 
 
@@ -100,13 +102,16 @@ class Apple(GameObject):
 
     def __init__(self):
         """Генерация начальной позиции яблока."""
-        position = (random.randint(0, GRID_WIDTH - 1), random.randint(0, GRID_HEIGHT - 1))
+        position = (random.randint(0, GRID_WIDTH - 1),
+                    random.randint(0, GRID_HEIGHT - 1))
         super().__init__(position)
         self.body_color = APPLE_COLOR
 
     def draw(self, surface):
         """Отрисовка яблока."""
-        rect = pygame.Rect(self.position[0] * GRID_SIZE, self.position[1] * GRID_SIZE, GRID_SIZE, GRID_SIZE)
+        rect = pygame.Rect(self.position[0] * GRID_SIZE,
+                           self.position[1] * GRID_SIZE,
+                           GRID_SIZE, GRID_SIZE)
         pygame.draw.rect(surface, self.body_color, rect)
 
     def randomize_position(self, snake_positions):
@@ -122,7 +127,7 @@ class Apple(GameObject):
 
 
 def handle_keys(snake):
-    """Обработка нажатий клавиш для змейки."""
+    """Обработка событий клавиш для змейки."""
     snake.handle_keys()
 
 
